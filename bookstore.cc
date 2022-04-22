@@ -2,14 +2,27 @@
 #include "Sales_item.h"
 int main()
 {
-	Sales_item item1, item;
+	Sales_item total, trans;
 
-	if (std::cin >> item) {
-		while (std::cin >> item1) {
-			item += item1;
+	if (std::cin >> total) {
+		while (std::cin >> trans) {
+			if (total.isbn() == trans.isbn()) {
+				total += trans;
+			} else {
+				std::cout << total
+					  << std::endl;
+				total = trans;
+			}
 		}
+
+		std::cout << total
+			  << std::endl;
+		
+	} else {
+		std::cerr << "No transactional records in the input!!!!!"
+			  << std::endl;
+		return -1;
 	}
-	std::cout << item << std::endl; // print their sum
 
 	return 0;
 }
