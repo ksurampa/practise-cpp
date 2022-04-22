@@ -1,0 +1,64 @@
+https://learning.oreilly.com/library/view/c-primer-fifth
+
+echo $? on UNIX
+echo %ERRORLEVEL%% on Windows
+
+g++ -o Hello HelloWorld.cpp node.cpp -Wall -std=c++0x		// C++ 11
+
+iostream -> 1 istream and 3 ostream objects
+	cin - istream
+	cout - ostream
+	cerr - ostream
+	clog - ostream
+
+>> & << are input and output operators
+endl is manipulator also responsible for flushing the buffer to ostream along with ending the current line
+
+Namespaces allow us to avoid inadvertant collisions between the names we define and uses of those same names inside library. All the name defined by the standard library are in the std namespace
+
+:: -> scope operator
+
+A block is a sequence of zero or more statments enclosed by curly braces
+
++= -> Compound Assignment operator
+
+CTRL + d -> End of File in UNIX
+CTRL + z -> End of File in Windows
+
+./bookstore <infile >outfile
+
+"."	->	Dot Operator
+() 	->	Call Operator
+
+Primitive Data types:
+
+	Characters, integers, boolean, floating point numbers etc.,
+	and special type called void
+
+	Arithmetic types are divided into 2 categories: integral types (which include character and boolean)
+	and floating-point types
+
+Type			Meaning					Size
+
+bool			boolean					NA
+char			character				8 bits
+wchar_t			wide character				16 bits
+char16_t		Unicode Character			16 bits
+char32_t		Unicode Character			32 bits
+short			Short integer				16 bits
+int			integer					32 bits (min 16 bits)
+long			long integer				64 bits (min 32 bits)
+long long		long integer				64 bits
+float			single-precision floating-point		6 significant digits (32 bits)
+double			double-precision floating point		10 significant digits (64 bits)
+long double		extended-precision floating point	10 significant digits (128 bits)
+
+--------------------------------------
+
+Inheritance (Public vs Private)
+Virtual Functions
+Friends
+Abstract Classes
+STL
+
+--------------------------------------
