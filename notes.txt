@@ -1,5 +1,7 @@
 https://learning.oreilly.com/library/view/c-primer-fifth
 
+GCC github link: https://github.com/gcc-mirror/gcc
+
 echo $? on UNIX
 echo %ERRORLEVEL%% on Windows
 
@@ -90,6 +92,9 @@ u8"hi!"  // utf-8 string literal (utf-8 encodes a Unicode character in 8 bits)
 
 We can independently specify the signedness and size of an integral literal. If the suffix contains a U, then the literal has an unsigned type, so a decimal, octal, or hexadecimal literal with a U suffix has the smallest type of unsigned int, unsigned long, or unsigned long long in which the literal’s value fits. If the suffix contains an L, then the literal’s type will be at least long; if the suffix contains LL, then the literal’s type will be either long long or unsigned long long. We can combine U with either L or LL. For example, a literal with a suffix of UL will be either unsigned long or unsigned long long, depending on whether its value fits in unsigned long.
 
+Variables:
+
+std::string book("0-201-78345-X"); // book initialized from string literal
 
 --------------------------------------
 

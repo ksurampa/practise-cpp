@@ -5,8 +5,12 @@ using namespace std;
 
 int main (void) {
 
-	Node* pNode = new Node();
+	Node* pNode = new Node;
 	int val = 0, sum = 0;
+	string str;
+
+	str = "Kishore Surampalli";
+	cout << str << endl;
 
 	// To check if char data type is signed or unsigned
 	char ch = 255;
@@ -26,6 +30,8 @@ int main (void) {
 	}
 
 	cout << "Sum of all values entered = " << sum << endl;
+
+	delete pNode;
 
 	return -1;
 }
