@@ -53,6 +53,44 @@ float			single-precision floating-point		6 significant digits (32 bits)
 double			double-precision floating point		10 significant digits (64 bits)
 long double		extended-precision floating point	10 significant digits (128 bits)
 
+Literals:
+
+The type of string literal is array of constant char s
+
+// multiline string literal
+std::cout << "a really, really long string literal "
+             "that spans two lines" << std::endl;
+
+The language defines several escape sequences:
+
+newline            \n     horizontal tab      \t     alert (bell)       \a
+vertical tab       \v     backspace          \b     double quote  \"
+backslash         \\     question mark     \?     single quote    \'
+carriage return   \r     formfeed            \f
+
+We can also write a generalized escape sequence, which is \x followed by one or more hexadecimal digits or a \ followed by one, two, or three octal digits. The value represents the numerical value of the character. Some examples (assuming the Latin-1 character set):
+
+\7 (bell)    \12 (newline)      \40 (blank)
+\0 (null)    \115 ('M')         \x4d ('M')
+
+As with an escape sequence defined by the language, we use these escape sequences as we would any other character:
+
+std::cout << "Hi \x4dO\115!\n";  // prints Hi MOM! followed by a newline
+std::cout << '\115' << '\n';     // prints M followed by a newline
+
+Specifying the type of a literal:
+
+We can override the default type of an integer, floating- point, or character literal by supplying a suffix or prefix
+
+L'a'     // wide character literal, type is wchar_t
+u8"hi!"  // utf-8 string literal (utf-8 encodes a Unicode character in 8 bits)
+42ULL    // unsigned integer literal, type is unsigned long long
+1E-3F    // single-precision floating-point literal, type is float
+3.14159L // extended-precision floating-point literal, type is long double
+
+We can independently specify the signedness and size of an integral literal. If the suffix contains a U, then the literal has an unsigned type, so a decimal, octal, or hexadecimal literal with a U suffix has the smallest type of unsigned int, unsigned long, or unsigned long long in which the literal’s value fits. If the suffix contains an L, then the literal’s type will be at least long; if the suffix contains LL, then the literal’s type will be either long long or unsigned long long. We can combine U with either L or LL. For example, a literal with a suffix of UL will be either unsigned long or unsigned long long, depending on whether its value fits in unsigned long.
+
+
 --------------------------------------
 
 Inheritance (Public vs Private)
