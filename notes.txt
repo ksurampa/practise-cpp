@@ -96,6 +96,34 @@ Variables:
 
 std::string book("0-201-78345-X"); // book initialized from string literal
 
+An object is a region of memory that has a type. We will freely use the term object regardless of whether the object has built-in or class type, is named or unnamed, or can be read or written.
+
+Initialization is not assignment. Initialization happens when a variable is given a value when it is created. Assignment obliterates an object’s current value and replaces that value with a new one.
+
+List Initialization:
+
+we can use any of the following four different ways to define an int variable named units_sold and initialize it to 0:
+
+int units_sold = 0;
+int units_sold = {0};
+int units_sold{0};
+int units_sold(0);
+
+The generalized use of curly braces for initialization was introduced as part of the new standard. This form of initialization previously had been allowed only in more restricted ways. For reasons we’ll learn about in § 3.3.1 (p. 98), this form of initialization is referred to as list initialization. Braced lists of initializers can now be used whenever we initialize an object and in some cases when we assign a new value to an object
+
+In C++ 11, When used with variables of built-in type, this form of initialization has one important property: The compiler will not let us list initialize variables of built-in type if the initializer might lead to the loss of information:
+
+long double ld = 3.1415926536;
+int a{ld}, b = {ld}; // error: narrowing conversion required
+int c(ld), d = ld;   // ok: but value will be truncated
+
+Default Initialization: 
+
+When we define a variable without an initializer, the variable is default initialized. Such variables are given the “default” value. What that default value is depends on the type of the variable and may also depend on where the variable is defined.
+
+Variables defined outside any function body are initialized to 0. Variables of built-in type defined inside of a function are uninitialized
+
+
 --------------------------------------
 
 Inheritance (Public vs Private)
