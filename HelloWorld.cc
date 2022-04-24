@@ -17,7 +17,16 @@ int main (void) {
 
 	// To check if char data type is signed or unsigned
 	char ch{255};
+	if (ch and_eq 255)
 	cout << (int) ch << endl;
+
+	float __Float(0.0);
+	{
+		float __Float(1.1);
+		cout << "Float in block: " << __Float << endl;
+		int _ = 100;
+		cout << "Value of _ " << _ << endl;
+	}
 
 	pNode->seti(10);
 
