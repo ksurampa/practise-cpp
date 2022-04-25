@@ -150,6 +150,20 @@ and_eq	bitor	not	or	xor
 
 Identifiers must begin with either a letter or an underscore
 
+Compound Types:
+
+References -
+
+References are of 2 types lvalue and rvalue. rvalue reference is introduced by C++ 11 as new kinda reference. rvalue references are primarily intended for use inside classes. A "reference" in general means "lvalue reference"
+
+A reference defines an alternative name for an object. A reference type “refers to” another type. We define a reference type by writing a declarator of the form &d, where d is the name being declared:
+
+int ival = 1024;
+int &refVal = ival;  // refVal refers to (is another name for) ival
+int &refVal2;        // error: a reference must be initialized
+
+A reference is an alias. Address of both the var and reference var when printed shall be same.
+
 --------------------------------------
 
 Inheritance (Public vs Private)

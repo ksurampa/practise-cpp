@@ -8,6 +8,13 @@ int main (void) {
 	Node* pNode = new Node;
 	int val(0), sum = {0};
 
+	int &refVal_1 = val; // refVal refers to (is another name for) val
+	int &refVal_2 = refVal_1;
+
+	cout << "Address of val = 0x" << &val 
+	     << " Address of refVal_1 = 0x" << &refVal_1
+	     << " Address of refVal_2 = 0x" << &refVal_2
+	     << endl;
 	// Implicitly initialized to empty string
 	string str;
 
@@ -16,7 +23,8 @@ int main (void) {
 	cout << pNode->geti() << endl;
 
 	// To check if char data type is signed or unsigned
-	char ch{255};
+	// char ch{255}; // Works on ARM g++ as the char is unsigned by default
+	char ch(255); // For it work on x86 as the char is signed by default
 	if (ch and_eq 255)
 	cout << (int) ch << endl;
 
@@ -36,7 +44,7 @@ int main (void) {
 	clog << "-------Logging mechanism------" << endl;
 	cerr << "-------Error-------" << endl;
 
-	while (cin >> val) {
+	while (cin >> refVal_1) {
 
 		sum += val;
 	}
