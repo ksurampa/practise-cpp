@@ -164,6 +164,18 @@ int &refVal2;        // error: a reference must be initialized
 
 A reference is an alias. Address of both the var and reference var when printed shall be same.
 
+Pointers -
+
+& - address of operator
+* - dereference operator
+nullptr - null pointer // Introduced in C++ 11
+
+	int *p1 = nullptr; // equivalent to int *p1 = 0;
+	int *p2 = 0;       // directly initializes p2 from the literal constant 0
+	// must #include cstdlib
+	int *p3 = NULL;    // equivalent to int *p3 = 0;
+
+
 --------------------------------------
 
 Inheritance (Public vs Private)
@@ -173,3 +185,17 @@ Abstract Classes
 STL
 
 --------------------------------------
+
+References/Further Reading:
+
+https://en.cppreference.com/w/cpp/11
+https://www.cplusplus.com/reference/
+https://en.cppreference.com/w/
+https://www.geeksforgeeks.org/c-plus-plus/?ref=shm
+https://docs.microsoft.com/en-us/cpp/cpp/?view=msvc-170
+https://www.javatpoint.com/cpp-tutorial
+
+Boost Library:
+https://www.boost.org/doc/libs/
+https://theboostcpplibraries.com/
+https://www.geeksforgeeks.org/advanced-c-boost-library/
