@@ -188,6 +188,9 @@ STL
 
 References/Further Reading:
 
+https://learning.oreilly.com/playlists/3b5aa7fb-ecc1-4356-8586-9c3251f58aee
+https://learning.oreilly.com/library/view/learning-object-oriented-programming/9781785289637/
+https://learning.oreilly.com/library/view/head-first-design/9781492077992
 https://en.cppreference.com/w/cpp/11
 https://www.cplusplus.com/reference/
 https://en.cppreference.com/w/
@@ -199,3 +202,13 @@ Boost Library:
 https://www.boost.org/doc/libs/
 https://theboostcpplibraries.com/
 https://www.geeksforgeeks.org/advanced-c-boost-library/
+
+--------------------------------------
+
+Coding Practise Sites:
+
+codeforces
+leetcode
+codechef
+atcoder
+
