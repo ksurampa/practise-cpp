@@ -11,6 +11,13 @@ int main (void) {
 	int &refVal_1 = val; // refVal refers to (is another name for) val
 	int &refVal_2 = refVal_1;
 
+	int* ptr;
+	int* &refPtr = ptr;
+
+	refPtr = &val;
+
+	cout << "Accessing reference to a pointer - " << *refPtr << endl;
+
 	cout << "Address of val = 0x" << &val 
 	     << " Address of refVal_1 = 0x" << &refVal_1
 	     << " Address of refVal_2 = 0x" << &refVal_2
@@ -46,6 +53,7 @@ int main (void) {
 
 	while (cin >> refVal_1) {
 
+		cout << "Entered Value " << *refPtr << endl;
 		sum += val;
 	}
 

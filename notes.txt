@@ -33,6 +33,7 @@ CTRL + z -> End of File in Windows
 () 	->	Call Operator
 
 Primitive Data types:
+---------------------
 
 	Characters, integers, boolean, floating point numbers etc.,
 	and special type called void
@@ -56,6 +57,7 @@ double			double-precision floating point		10 significant digits (64 bits)
 long double		extended-precision floating point	10 significant digits (128 bits)
 
 Literals:
+---------
 
 The type of string literal is array of constant char s
 
@@ -93,6 +95,7 @@ u8"hi!"  // utf-8 string literal (utf-8 encodes a Unicode character in 8 bits)
 We can independently specify the signedness and size of an integral literal. If the suffix contains a U, then the literal has an unsigned type, so a decimal, octal, or hexadecimal literal with a U suffix has the smallest type of unsigned int, unsigned long, or unsigned long long in which the literal’s value fits. If the suffix contains an L, then the literal’s type will be at least long; if the suffix contains LL, then the literal’s type will be either long long or unsigned long long. We can combine U with either L or LL. For example, a literal with a suffix of UL will be either unsigned long or unsigned long long, depending on whether its value fits in unsigned long.
 
 Variables:
+----------
 
 std::string book("0-201-78345-X"); // book initialized from string literal
 
@@ -101,6 +104,7 @@ An object is a region of memory that has a type. We will freely use the term obj
 Initialization is not assignment. Initialization happens when a variable is given a value when it is created. Assignment obliterates an object’s current value and replaces that value with a new one.
 
 List Initialization:
+--------------------
 
 we can use any of the following four different ways to define an int variable named units_sold and initialize it to 0:
 
@@ -118,6 +122,7 @@ int a{ld}, b = {ld}; // error: narrowing conversion required
 int c(ld), d = ld;   // ok: but value will be truncated
 
 Default Initialization: 
+-----------------------
 
 When we define a variable without an initializer, the variable is default initialized. Such variables are given the “default” value. What that default value is depends on the type of the variable and may also depend on where the variable is defined.
 
@@ -126,6 +131,7 @@ Variables defined outside any function body are initialized to 0. Variables of b
 C++ is a statically typed language, which means that types are checked at compile time. The process by which types are checked is referred to as type checking.
 
 C++ Keywords:
+-------------
 
 alignas		continue	friend		register		true
 alignof		decltype	goto		reinterpret_cast	try
@@ -151,8 +157,10 @@ and_eq	bitor	not	or	xor
 Identifiers must begin with either a letter or an underscore
 
 Compound Types:
+---------------
 
-References -
+References:
+-----------
 
 References are of 2 types lvalue and rvalue. rvalue reference is introduced by C++ 11 as new kinda reference. rvalue references are primarily intended for use inside classes. A "reference" in general means "lvalue reference"
 
@@ -164,7 +172,8 @@ int &refVal2;        // error: a reference must be initialized
 
 A reference is an alias. Address of both the var and reference var when printed shall be same.
 
-Pointers -
+Pointers:
+---------
 
 & - address of operator
 * - dereference operator
@@ -175,6 +184,54 @@ nullptr - null pointer // Introduced in C++ 11
 	// must #include cstdlib
 	int *p3 = NULL;    // equivalent to int *p3 = 0;
 
+Modern C++ programs must not use NULL, instead use nullptr
+
+As we’ve seen, a variable definition consists of a base type and a list of declarators. Each declarator can relate its variable to the base type differently from the other declarators in the same definition. Thus, a single definition might define variables of different types:
+
+// i is an int; p is a pointer to int; r is a reference to int
+int i = 1024, *p = &i, &r = i;
+
+It is a common misconception to think that the type modifier (* or &) applies to all the variables defined in a single statement. Part of the problem arises because we can put whitespace between the type modifier and the name being declared:
+
+int* p;  // legal but might be misleading
+
+In the above stmt, "int" is base type. "*" is type modifier "p" identifier. *p is declarator
+
+Pointers to Pointers:
+---------------------
+
+In general, there are no limits to how many type modifiers can be applied to a declarator. When there is more than one modifier, they combine in ways that are logical but not always obvious. As one example, consider a pointer. A pointer is an object in memory, so like any object it has an address. Therefore, we can store the address of a pointer in another pointer.
+
+We indicate each pointer level by its own *. That is, we write ** for a pointer to a pointer, *** for a pointer to a pointer to a pointer, and so on:
+
+int ival = 1024;
+int *pi = &ival;    // pi points to an int
+int **ppi = &pi;    // ppi points to a pointer to an int
+
+Here pi is a pointer to an int and ppi is a pointer to a pointer to an in
+
+Just as dereferencing a pointer to an int yields an int, dereferencing a pointer to a pointer yields a pointer. To access the underlying object, we must dereference the original pointer twice:
+
+cout << "The value of ival\n"
+     << "direct value: " << ival << "\n"
+     << "indirect value: " << *pi << "\n"
+     << "doubly indirect value: " << **ppi
+     << endl;
+
+This program prints the value of ival three different ways: first, directly; then, through the pointer to int in pi; and finally, by dereferencing ppi twice to get to the underlying value in ival
+
+References to Pointers:
+-----------------------
+
+A reference is not an object. Hence, we may not have a pointer to a reference. However, because a pointer is an object, we can define a reference to a pointer:
+
+int i = 42;
+int *p;        // p is a pointer to int
+int *&r = p;   // r is a reference to the pointer p
+r = &i; //  r refers to a pointer; assigning &i to r makes p point to i
+*r = 0; //  dereferencing r yields i, the object to which p points; changes i to 0
+
+The easiest way to understand the type of r is to read the definition right to left. The symbol closest to the name of the variable (in this case the & in &r) is the one that has the most immediate effect on the variable’s type. Thus, we know that r is a reference. The rest of the declarator determines the type to which r refers. The next symbol, * in this case, says that the type r refers to is a pointer type. Finally, the base type of the declaration says that r is a reference to a pointer to an int.
 
 --------------------------------------
 
