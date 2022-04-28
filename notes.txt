@@ -242,6 +242,45 @@ we can’t change the value of a const object after we create it, it must be ini
 	const int j = 42;          // ok: initialized at compile time
 	const int k;               // error: k is uninitialized const
 
+When a const object is initialized from a compile-time constant, such as in our definition of bufSize:
+
+const int bufSize = 512;    // input buffer size
+
+the compiler will usually replace uses of the variable with its corresponding value during compilation. That is, the compiler will generate code using the value 512 in the places that our code uses bufSize
+
+References to const:
+--------------------
+
+	const int ci = 1024;
+	const int &r1 = ci;   // ok: both reference and underlying object are const
+	r1 = 42;              // error: r1 is a reference to const
+	int &r2 = ci;         // error: non const reference to a const object
+
+Initialization and References to const:
+---------------------------------------
+
+In § 2.3.1 (p. 51) we noted that there are two exceptions to the rule that the type of a reference must match the type of the object to which it refers. The first exception is that we can initialize a reference to const from any expression that can be converted (§ 2.1.2, p. 35) to the type of the reference. In particular, we can bind a reference to const to a nonconst object, a literal, or a more general expression:
+
+	int i = 42;
+	const int &r1 = i;      // we can bind a const int& to a plain int object
+	const int &r2 = 42;     // ok: r2 is a reference to const
+	const int &r3 = r1 * 2; // ok: r3 is a reference to const
+	int &r4 = r1 * 2;        // error: r4 is a plain, non const reference
+
+The easiest way to understand this difference in initialization rules is to consider what happens when we bind a reference to an object of a different type:
+
+double dval = 3.14;
+const int &ri = dval;
+
+Here ri refers to an int. Operations on ri will be integer operations, but dval is a floating-point number, not an integer. To ensure that the object to which ri is bound is an int, the compiler transforms this code into something like
+
+const int temp = dval;   // create a temporary const int from the double
+const int &ri = temp;    // bind ri to that temporary
+
+In this case, ri is bound to a temporary object. A temporary object is an unnamed object created by the compiler when it needs a place to store a result from evaluating an expression. C++ programmers often use the word temporary as an abbreviation for temporary object.
+
+Now consider what could happen if this initialization were allowed but ri was not const. If ri weren’t const, we could assign to ri. Doing so would change the object to which ri is bound. That object is a temporary, not dval. The programmer who made ri refer to dval would probably expect that assigning to ri would change dval. After all, why assign to ri unless the intent is to change the object to which ri is bound? Because binding a reference to a temporary is almost surely not what the programmer intended, the language makes it illegal.
+
 
 References/Further Reading:
 ---------------------------
