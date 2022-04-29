@@ -16,6 +16,14 @@ int main (void) {
 
 	refPtr = &val;
 
+	const int ci = 10;
+	const int* p2 = &ci;
+	const int* const p3 = p2;
+
+	p2 = p3;
+
+	cout << "Value of p3 = " << *p2 << endl;
+
 	cout << "Accessing reference to a pointer - " << *refPtr << endl;
 
 	cout << "Address of val = 0x" << &val 
