@@ -53,6 +53,12 @@ int main (void) {
 
 	pNode->seti(10);
 
+	const int row_col = 256 * pNode->geti();
+	cout << "Value of const variable row_col = " << row_col << endl;
+
+	constexpr int null = 0;
+	int *p1 = (int *)null;
+
 	cout << "Hello! Hard work always wins...!" << endl;
 	cout << "Value of i in class Node " << pNode->geti() << endl;
 
