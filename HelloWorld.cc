@@ -3,6 +3,8 @@
 
 using namespace std;
 
+typedef int* pInt;
+
 int main (void) {
 
 	Node* pNode = new Node;
@@ -25,6 +27,9 @@ int main (void) {
 	cout << "Value of p3 = " << *p2 << endl;
 
 	cout << "Accessing reference to a pointer - " << *refPtr << endl;
+
+	const pInt typedefInt = &val;
+	cout << "typedefInt = " << *typedefInt << endl;
 
 	cout << "Address of val = 0x" << &val 
 	     << " Address of refVal_1 = 0x" << &refVal_1

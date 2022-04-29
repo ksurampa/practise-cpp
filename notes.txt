@@ -415,6 +415,59 @@ Like any other constant pointer, a constexpr pointer may point to a const or a n
 	constexpr const int *p = &i; // p is a constant pointer to the const int i
 	constexpr int *p1 = &j;      // p1 is a constant pointer to the int j
 
+Type Aliases:
+-------------
+
+A type alias is a name that is a synonym for another type.
+Type aliases let us simplify complicated type definitions, making those types easier to use.
+Type aliases also let us emphasize the purpose for which a type is used.
+
+We can define a type alias in one of two ways. Traditionally, we use a typedef:
+
+	typedef double wages;   // wages is a synonym for double
+	typedef wages base, *p; // base is a synonym for double, p for double*
+
+The keyword typedef may appear as part of the base type of a declaration (§ 2.3, p. 50).
+Declarations that include typedef define type aliases rather than variables.
+As in any other declaration, the declarators can include type modifiers that define compound types built from the base type of the definition.
+
+C++11 has introduced a 2nd way of defining a type alias, via an alias declaration.
+
+	using SI = Sales_item;	// SI is a synonym for Sales_item
+	SI item;		// Same as Sales_item item
+
+The alias declaration defines the name on the left hand side of the "=" as an alias for the type that appears on the right hand side
+
+Pointers, const and Type Aliases:
+---------------------------------
+
+Declarations that use type aliases that represent compound types and const can yield surprising results.
+For example, the following declarations use the type pstring, which is an alias for the the type char*:
+
+	typedef char *pstring;
+	const pstring cstr = 0; // cstr is a constant pointer to char
+	const pstring *ps;      // ps is a pointer to a constant pointer to char
+
+The base type in these declarations is const pstring. As usual, a const that appears in the base type modifies the given type.
+The type of pstring is “pointer to char.” So, const pstring is a constant pointer to char—not a pointer to const char.
+
+It can be tempting, albeit incorrect, to interpret a declaration that uses a type alias by conceptually replacing the alias with its corresponding type:
+
+	const char *cstr = 0; // wrong interpretation of const pstring cstr
+
+However, this interpretation is wrong. When we use pstring in a declaration, the base type of the declaration is a pointer type.
+When we rewrite the declaration using char*, the base type is char and the * is part of the declarator. In this case, const char is the base type.
+This rewrite declares cstr as a pointer to const char rather than as a const pointer to char.
+
+
+
+
+
+
+
+
+
+
 References/Further Reading:
 ---------------------------
 
