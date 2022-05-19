@@ -2,8 +2,10 @@ https://learning.oreilly.com/library/view/c-primer-fifth
 
 GCC github link: https://github.com/gcc-mirror/gcc
 
-echo $? on UNIX
-echo %ERRORLEVEL%% on Windows
+To see the return value of previously run program:
+
+	echo $? on UNIX
+	echo %ERRORLEVEL%% on Windows
 
 g++ -o Hello HelloWorld.cpp node.cpp -Wall -std=c++0x		// C++ 11
 
